@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- Define o idioma da página como português do Brasil -->
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade para dispositivos móveis -->
+    <title>Batimentos Cardíacos</title> <!-- Título da aba do navegador -->
+
+    <style>
+        /* Estilo geral do corpo da página */
+        body {
+            margin: 0; /* Remove margens padrão */
+            display: flex; /* Usando Flexbox para centralizar */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh; /* Altura da janela */
+            background: black; /* Fundo preto */
+            overflow: hidden; /* Esconde conteúdo que ultrapassa os limites da tela */
+        }
+
+        /* Container do gráfico de batimento */
+        .container {
+            position: relative;
+            width: 1080px;
+            height: 200px;
+            overflow: hidden;
+            background: black;
+        }
+
+        /* Linha base vermelha */
+        .line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: red;
+        }
+
+        /* Área que contém o SVG animado */
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Tamanho do SVG */
+        .heart svg {
+            width: 2160px; /* O dobro do container para criar movimento */
+            height: 200px;
+        }
+
+        /* Caminho do gráfico de batimento */
+        .heart path {
+            fill: none;
+            stroke: red;
+            stroke-width: 3;
+            stroke-linecap: round;
+            animation: heartbeat 4s linear infinite; /* Animação inicial lenta */
+        }
+
+        /* Animação de movimento lateral (batimento) */
+        @keyframes heartbeat {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-1080px);
+            }
+        }
+
+        /* Corações flutuantes */
+        .floating-heart {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(45deg);
+            animation: float-up 2s ease-out forwards;
+            z-index: 100;
+        }
+
+        /* Corações com formato real usando pseudo-elementos */
+        .floating-heart::before,
+        .floating-heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .floating-heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .floating-heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        /* Animação dos corações subindo */
+        @keyframes float-up {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-600px) scale(1.5);
+            }
+        }
+
+        /* Efeito de pulsação na tela */
+        .pulse {
+            animation: pulse-screen 0.5s ease-in-out;
+        }
+
+        @keyframes pulse-screen {
+            0%, 100% {
+                background-color: black;
+            }
+            50% {
+                background-color: #220000; /* Tom mais claro no pico da batida */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="line"></div> <!-- Linha base vermelha -->
+        <div class="heart">
+            <!-- SVG do gráfico de batimentos cardíacos -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2160 200">
+                <!-- Caminho do batimento -->
+                <path d="M0,100 L200,100 L250,50 L300,150 L350,100 L550,100 L600,50 L650,150 L700,100 L2160,100" />
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        const path = document.querySelector(".heart path");
+        const body = document.body;
+
+        // Após 5 segundos, acelera a batida
+        setTimeout(() => {
+            path.style.animation = "heartbeat 1s linear infinite"; // Acelera a animação
+
+            // Inicia os corações flutuantes e pulso da tela
+            setInterval(() => {
+                // Cria um coração
+                const heart = document.createElement("div");
+                heart.classList.add("floating-heart");
+
+                // Posição horizontal aleatória
+                heart.style.left = `${Math.random() * 100}vw`;
+
+                // Tamanho aleatório
+                const scale = Math.random() * 0.5 + 0.75;
+                heart.style.transform += ` scale(${scale})`;
+
+                // Adiciona o coração à tela
+                document.body.appendChild(heart);
+
+                // Remove após animação
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+
+                // Aplica pulsação no fundo
+                body.classList.add("pulse");
+                setTimeout(() => {
+                    body.classList.remove("pulse");
+                }, 500);
+            }, 300); // Frequência de batidas/corações acelerados
+        }, 5000); // Espera 5 segundos antes de acelerar
+    </script>
+</body>
+</html>
