@@ -1,0 +1,262 @@
+<!DOCTYPE html> <!-- Define o tipo de documento HTML5 -->
+<html lang="pt-BR"> <!-- Define o idioma da página como português do Brasil -->
+<head>
+  <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+  <title>Portfólio - Antônio Eval P S</title> <!-- Título exibido na aba do navegador -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Torna a página responsiva -->
+
+  <style>
+    /* Estilos globais e reset de margens/padding */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Estilo do corpo da página */
+    body {
+      background: #121212; /* Fundo escuro */
+      color: #f1f1f1; /* Cor clara para o texto */
+      padding: 20px; /* Espaçamento interno */
+    }
+
+    /* Estilo do cabeçalho */
+    header {
+      text-align: center; /* Centraliza o conteúdo */
+      margin-bottom: 40px; /* Espaçamento inferior */
+    }
+
+    header h1 {
+      font-size: 2.5em; /* Tamanho grande para o nome */
+      margin-bottom: 10px;
+      color: #ff6b00; /* Cor laranja */
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #ccc; /* Cinza claro */
+    }
+
+    /* Estilo das seções */
+    section {
+      margin-bottom: 40px;
+    }
+
+    section h2 {
+      color: #ffb347; /* Laranja mais claro */
+      margin-bottom: 10px;
+      border-bottom: 1px solid #444; /* Linha inferior */
+      padding-bottom: 5px;
+    }
+
+    section p, ul {
+      line-height: 1.6; /* Espaçamento entre linhas */
+    }
+
+    ul {
+      list-style: square; /* Marcadores quadrados */
+      padding-left: 20px;
+    }
+
+    /* Grid para exibir os projetos */
+    .projetos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Layout responsivo */
+      gap: 20px; /* Espaçamento entre colunas */
+    }
+
+    /* Estilo de cada projeto */
+    .projeto {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Sombra */
+      transition: transform 0.3s; /* Animação ao passar o mouse */
+    }
+
+    .projeto:hover {
+      transform: scale(1.02); /* Efeito de zoom */
+    }
+
+    .projeto img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover; /* Cobre sem distorcer */
+    }
+
+    .projeto h3 {
+      margin: 15px;
+      color: #ffb347;
+    }
+
+    .projeto a {
+      display: block;
+      margin: 0 15px 15px;
+      color: #1fa2ff; /* Azul */
+      text-decoration: none;
+    }
+
+    /* Estilo do botão de download do currículo */
+    .btn-download {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #ff6b00;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .btn-download:hover {
+      background: #e65c00;
+    }
+
+    section h4 {
+      color: #ffb347; /* Laranja mais claro */
+      margin-bottom: 10px;
+      border-bottom: 1px solid #444; /* Linha inferior */
+      padding-bottom: 5px;
+    }
+
+    section p, ul {
+      line-height: 1.6; /* Espaçamento entre linhas */
+    }
+
+    ul {
+      list-style: square; /* Marcadores quadrados */
+      padding-left: 20px;
+    }
+
+    /* Grid para exibir os projetos */
+    .projetos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Layout responsivo */
+      gap: 20px; /* Espaçamento entre colunas */
+    }
+
+    /* Estilo de cada projeto */
+    .projeto {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Sombra */
+      transition: transform 0.3s; /* Animação ao passar o mouse */
+    }
+
+    .projeto:hover {
+      transform: scale(1.02); /* Efeito de zoom */
+    }
+
+    .projeto img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover; /* Cobre sem distorcer */
+    }
+
+    /* Rodapé da página */
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+
+    /* Botão do WhatsApp (abaixo do botão de currículo) */
+    .whatsapp-fixed {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #25D366; /* Verde WhatsApp */
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .whatsapp-fixed:hover {
+      background-color: #1ebe5b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho com nome e descrição -->
+  <header>
+    <h1>Antonio Eval P S</h1>
+    <p>Desenvolvedor Front-end | Criador de Experiências Visuais</p>
+  </header>
+
+  <!-- Seção Sobre Mim -->
+  <section id="sobre">
+    <h2>Sobre mim</h2>
+    <p>Sou um desenvolvedor apaixonado por tecnologia e artes visuais. Gosto de criar experiências digitais que combinam design e interatividade. Tenho experiência com HTML, CSS3, JavaScript e estou sempre aprendendo novas ferramentas.</p>
+  </section>
+
+  <!-- Seção Habilidades -->
+  <section id="habilidades">
+    <h2>Habilidades</h2>
+    <ul>
+      <li>HTML5, CSS3, JavaScript</li>
+      <li>Criação de efeitos visuais com animações</li>
+      <li>Design responsivo</li>
+      <li>Experiência com ferramentas como Figma e Photoshop</li>
+    </ul>
+  </section>
+
+  <!-- Seção Projetos -->
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <div class="projetos">
+      <!-- Projeto 1 -->
+      <div class="projeto">
+        <img src="https://via.placeholder.com/400x150?text=Projeto+1" alt="Projeto 1">
+        <h3>Protetor de tela Fogo</h3>
+        <a href="FogoP.html" target="_blank">Ver Projeto</a>
+      </div>
+
+      <!-- Projeto 2 -->
+      <div class="projeto">
+        <img src="https://Calendario.html" alt="Projeto 2">
+        <h3>Calendario</h3>
+        <a href="Calendario.html">Ver Projeto</a>
+      </div>
+
+      <!-- Projeto 3 -->
+      <div class="projeto">
+        <img src="https://PulsacaoCoracao.HTML" alt="Projeto 3">
+        <h3>Pulsação do Coração</h3>
+        <a href="PulsacaoCoracao.HTML">Ver Projeto</a>
+      </div>
+    </div>
+  </section>
+
+      <!-- Projeto 4 -->
+   <div class="projeto">
+    <img src="Loja.html" alt="Projeto 4">
+    <h3>Loja</h3>
+    <a href="Loja.html">Ver Projeto</a>
+  </div>
+</div>
+</section>
+
+  <!-- Seção para baixar o currículo -->
+  <section id="curriculo">
+    <h2>Download do Currículo</h2>
+    <p>Você pode baixar meu currículo em PDF clicando no botão abaixo:</p>
+    <a href="Curriculum Antonio Eval Pereira da Silva 16092021----1.pdf" download class="btn-download">📄 Baixar Currículo</a>
+
+    <!-- Botão de WhatsApp abaixo do botão de currículo -->
+    <br>
+    <a href="https://wa.me/5511989955242" class="whatsapp-fixed" target="_blank" aria-label="Fale comigo no WhatsApp">
+      💬 Fale comigo no WhatsApp
+    </a>
+  </section>
+
+  <!-- Rodapé da página -->
+  <footer>
+    © 2025 - Antonio Eval P S. Todos os direitos reservados. | E-mail <a href="mailto:tonygugatg02@gmail.com">Contato</a>
+  </footer>
+
+</body>
+</html>
