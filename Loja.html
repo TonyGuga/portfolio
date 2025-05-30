@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- Define o idioma da página como português do Brasil -->
+<head>
+  <meta charset="UTF-8"> <!-- Define o conjunto de caracteres como UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Garante a responsividade do site -->
+  <title>Vitrine da Loja</title> <!-- Define o título exibido na aba do navegador -->
+
+  <style>
+    /* Estilo geral do corpo da página */
+    body {
+      margin: 0; /* Remove as margens padrão do navegador */
+      font-family: Arial, sans-serif; /* Define a fonte padrão do texto */
+      background-color: #C9E068; /* Cor de fundo da página */
+    }
+
+    /* Container principal da vitrine */
+    .vitrine {
+      max-width: 1200px; /* Largura máxima da vitrine */
+      margin: auto; /* Centraliza a vitrine na tela */
+      padding: 20px; /* Espaçamento interno da vitrine */
+    }
+
+    /* Estilo do título principal */
+    h1 {
+      text-align: center; /* Centraliza o texto */
+      color: #333; /* Cor do texto */
+    }
+
+    /* Estilo para o contêiner de produtos, usando grid */
+    .produtos {
+      display: grid; /* Ativa o layout em grade */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Cria colunas responsivas com largura mínima de 250px */
+      gap: 20px; /* Espaçamento entre os itens */
+      margin-top: 20px; /* Espaço acima da grade */
+    }
+
+    /* Estilo individual de cada item de produto */
+    .produto {
+      background: white; /* Cor de fundo branca */
+      border-radius: 8px; /* Cantos arredondados */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Sombra suave */
+      overflow: hidden; /* Esconde conteúdo que ultrapasse os limites */
+      text-align: center; /* Centraliza o conteúdo dentro do produto */
+    }
+
+    /* Estilo para imagem do produto */
+    .produto img {
+      width: 100%; /* Imagem ocupa toda a largura do container */
+      height: auto; /* Mantém a proporção da imagem */
+    }
+
+    /* Estilo para descrição do produto */
+    .produto p {
+      padding: 10px; /* Espaçamento interno */
+      font-weight: bold; /* Texto em negrito */
+      color: #555; /* Cor do texto */
+    }
+
+    /* Estilo do rodapé com os botões de redes sociais */
+    .redes-sociais {
+      margin-top: 30px; /* Espaço acima do rodapé */
+      text-align: center; /* Centraliza os botões */
+    }
+
+    /* Estilo individual de cada botão de rede social */
+    .redes-sociais a {
+      margin: 0 10px; /* Espaço lateral entre os botões */
+      text-decoration: none; /* Remove o sublinhado do link */
+      color: white; /* Cor do texto do botão */
+      background-color: #333; /* Cor de fundo do botão */
+      padding: 10px 15px; /* Tamanho do botão */
+      border-radius: 5px; /* Cantos arredondados */
+      display: inline-block; /* Exibe os botões em linha */
+      transition: background 0.3s; /* Animação suave ao passar o mouse */
+    }
+
+    /* Efeito visual ao passar o mouse nos botões */
+    .redes-sociais a:hover {
+      background-color: #555; /* Muda a cor de fundo para um cinza mais claro */
+    }
+  </style>
+</head>
+<body>
+  <!-- Container principal que envolve toda a vitrine -->
+  <div class="vitrine">
+    <h1>Novas Miradas</h1> <!-- Título da seção -->
+
+    <!-- Primeira janela de produtos -->
+    <div class="produtos">
+      <!-- Produto 1 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+1" alt="Produto 1"> <!-- Imagem genérica do produto -->
+        <p>Produto 1 - R$99,99</p> <!-- Descrição e preço -->
+      </div>
+
+      <!-- Produto 2 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+2" alt="Produto 2">
+        <p>Produto 2 - R$149,99</p>
+      </div>
+
+      <!-- Produto 3 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+3" alt="Produto 3">
+        <p>Produto 3 - R$79,90</p>
+      </div>
+
+      <!-- Produto 4 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+4" alt="Produto 4">
+        <p>Produto 4 - R$59,90</p>
+      </div>
+    </div>
+
+    <!-- Segunda janela de produtos -->
+    <div class="produtos">
+      <!-- Produto 5 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+5" alt="Produto 5">
+        <p>Produto 5 - R$129,99</p>
+      </div>
+
+      <!-- Produto 6 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+6" alt="Produto 6">
+        <p>Produto 6 - R$89,00</p>
+      </div>
+
+      <!-- Produto 7 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+7" alt="Produto 7">
+        <p>Produto 7 - R$199,90</p>
+      </div>
+
+      <!-- Produto 8 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+8" alt="Produto 8">
+        <p>Produto 8 - R$59,00</p>
+      </div>
+    </div>
+
+    <!-- Terceira janela de produtos -->
+    <div class="produtos">
+      <!-- Produto 9 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+9" alt="Produto 9">
+        <p>Produto 9 - R$39,90</p>
+      </div>
+
+      <!-- Produto 10 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+10" alt="Produto 10">
+        <p>Produto 10 - R$109,90</p>
+      </div>
+
+      <!-- Produto 11 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+11" alt="Produto 11">
+        <p>Produto 11 - R$159,90</p>
+      </div>
+
+      <!-- Produto 12 -->
+      <div class="produto">
+        <img src="https://via.placeholder.com/300x200?text=Produto+12" alt="Produto 12">
+        <p>Produto 12 - R$69,99</p>
+      </div>
+    </div>
+
+    <!-- Rodapé com os botões de redes sociais -->
+    <div class="redes-sociais">
+      <a href="https://wa.me/seunumero" target="_blank">WhatsApp</a> <!-- Link que abre conversa no WhatsApp -->
+      <a href="mailto:contato@sualoja.com">E-mail</a> <!-- Link que abre cliente de e-mail -->
+      <a href="https://facebook.com" target="_blank">Facebook</a> <!-- Link para Facebook -->
+      <a href="https://instagram.com" target="_blank">Instagram</a> <!-- Link para Instagram -->
+    </div>
+  </div>
+</body>
+</html>

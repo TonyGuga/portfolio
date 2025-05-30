@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Protetor de Tela em Chamas</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      background: black;
+    }
+
+    body {
+      animation: shake 0.3s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(2px, -2px); }
+      50% { transform: translate(-2px, 2px); }
+      75% { transform: translate(2px, 2px); }
+      100% { transform: translate(-2px, -2px); }
+    }
+
+    .alerta {
+      position: fixed;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      color: red;
+      font-size: 3em;
+      font-family: Arial, sans-serif;
+      text-shadow: 0 0 20px yellow;
+      animation: piscar 1s infinite;
+      z-index: 4;
+    }
+
+    @keyframes piscar {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .burn-layer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 0%;
+      background: url('/mnt/data/fogo.png') center bottom repeat-y;
+      background-size: cover;
+      opacity: 0.9;
+      transition: height 0.3s ease-out;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .fade-top {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 40%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .fire, .smoke, .spark {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .fire {
+      width: 20px;
+      height: 20px;
+      background: orange;
+      opacity: 0.8;
+      animation: subirChama 3s linear forwards;
+      z-index: 3;
+    }
+
+    @keyframes subirChama {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-600px) scale(2); opacity: 0; }
+    }
+
+    .smoke {
+      width: 25px;
+      height: 25px;
+      background: rgba(200, 200, 200, 0.1);
+      animation: subirFumaca 4s linear forwards;
+      z-index: 2;
+    }
+
+    @keyframes subirFumaca {
+      0% { transform: translateY(0) scale(1); opacity: 0.2; }
+      100% { transform: translateY(-800px) scale(3); opacity: 0; }
+    }
+
+    .spark {
+      width: 5px;
+      height: 5px;
+      background: yellow;
+      animation: brilhar 1s ease-out forwards;
+      z-index: 3;
+    }
+
+    @keyframes brilhar {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="alerta">🔥 ALERTA: FOGO DETECTADO! 🔥</div>
+<div id="burn" class="burn-layer"></div>
+<div class="fade-top"></div>
+
+<!-- Áudio de fundo -->
+<audio id="fire-audio" autoplay loop>
+  <source src="fogo.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio HTML5.
+</audio>
+
+<script>
+  // Fogo consumindo a tela
+  let alturaFogo = 0;
+  function consumirTela() {
+    const camada = document.getElementById('burn');
+    if (alturaFogo < 100) {
+      alturaFogo += 0.5;
+      camada.style.height = alturaFogo + '%';
+    }
+  }
+
+  // Criar efeitos
+  function criarChama() {
+    const chama = document.createElement('div');
+    chama.className = 'fire';
+    chama.style.left = Math.random() * window.innerWidth + 'px';
+    chama.style.bottom = '0px';
+    chama.style.backgroundColor = `hsl(${Math.random() * 30}, 100%, 50%)`;
+    document.body.appendChild(chama);
+    setTimeout(() => chama.remove(), 3000);
+  }
+
+  function criarFumaca() {
+    const fumaca = document.createElement('div');
+    fumaca.className = 'smoke';
+    fumaca.style.left = Math.random() * window.innerWidth + 'px';
+    fumaca.style.bottom = '0px';
+    document.body.appendChild(fumaca);
+    setTimeout(() => fumaca.remove(), 4000);
+  }
+
+  function criarFaisca() {
+    const faisca = document.createElement('div');
+    faisca.className = 'spark';
+    faisca.style.left = Math.random() * window.innerWidth + 'px';
+    faisca.style.bottom = '0px';
+    document.body.appendChild(faisca);
+    setTimeout(() => faisca.remove(), 1000);
+  }
+
+  // Animações em intervalo
+  setInterval(consumirTela, 200);
+  setInterval(criarChama, 100);
+  setInterval(criarFumaca, 300);
+  setInterval(criarFaisca, 150);
+
+  // Controle automático do áudio
+  const audio = document.getElementById('fire-audio');
+  window.addEventListener('click', () => {
+    if (audio.paused) audio.play();
+  });
+</script>
+
+</body>
+</html>
